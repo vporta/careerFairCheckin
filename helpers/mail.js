@@ -22,12 +22,12 @@ var helpers = {
   helloEmail: function(){
     var helper = require('sendgrid').mail
 
-    from_email = new helper.Email("vporta7@gmail.com")
-    to_email = new helper.Email("vporta7@yahoo.com") //user email address
-    subject = 'Welcome to CesarCells!';
-    content = new helper.Content("text/plain", "Hi")
+    from_email = new helper.Email("")
+    to_email = new helper.Email("") //user email address
+    subject = 'Subject';
+    content = new helper.Content("text/plain", "Content")
     mail = new helper.Mail(from_email, subject, to_email, content)
-    email = new helper.Email("vporta7@gmail.com")
+    email = new helper.Email("")
     mail.personalizations[0].addTo(email)
 
     return mail.toJSON()
@@ -37,4 +37,3 @@ var helpers = {
 module.exports = helpers;
 
 
-// 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

@@ -6,8 +6,8 @@ var path = require('path'),
     cookieParser = require('cookie-parser'),
     mongoose = require('mongoose'),
     
-    User = require('./models/User.js');
-    // sendgrid = require('./helpers/mail');
+    User = require('./models/User.js'),
+    sendgrid = require('./helpers/mail');
 
 //======Express========
 var app = express();

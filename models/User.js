@@ -6,8 +6,7 @@ var UserSchema = new Schema({
   name: String,
   email: String,
   company: String,
-  title: String,
-  likeme: Boolean
+  title: String
 }); 
   
   

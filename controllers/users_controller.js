@@ -6,9 +6,9 @@ var router = express.Router();
 
 var User = require('../models/User.js');
 
-// var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
+var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY)
 var helper = require('sendgrid').mail
-// var helpers = require('../helpers/mail');
+var helpers = require('../helpers/mail');
 
 
 // === HOME PAGE ======
@@ -44,40 +44,41 @@ router.post('/users/save', function (req, res) {
   newUser.save(function(err, result) {
    console.log(newUser);
    console.log('Result' + result);
-  });
-  // .then(function() {
+  })
+  .then(function() {
 
-  //   req.session.name = req.body.fname;
-  //   req.session.email = req.body.email;
-  //   req.session.company = req.body.company
+    req.session.name = req.body.fname;
+    req.session.email = req.body.email;
+    req.session.company = req.body.company
 
-  //   // var mailsubject = req.body.subject;
-  //   var name = req.session.name;
-  //   var email = req.session.email;
-  //   var company = "Vincent's Resume Link: https://drive.google.com/open?id=0By5CeMBLQneqeVhtdFk4NDdXUmc";
+    // var mailsubject = req.body.subject;
+    var name = req.session.name;
+    var email = req.session.email;
+    var company = "Your Name: <Resume Link Here>";
     
-  //   var helper  = require('sendgrid').mail;
-  //   from_email = new helper.Email("") // Your email goes here
-  //   to_email = new helper.Email(email) 
-  //   subject = name;
-  //   content = new helper.Content("text/plain", company)
-  //   mail = new helper.Mail(from_email, subject, to_email, content)
+    var helper  = require('sendgrid').mail;
+    from_email = new helper.Email("") // Your email goes here
+    to_email = new helper.Email(email) 
+    subject = name;
+    content = new helper.Content("text/plain", company)
+    mail = new helper.Mail(from_email, subject, to_email, content)
 
-  //   var sg = require('sendgrid').SendGrid(process.env.SENDGRID_APIKEYTWO);
-  //   var requestBody = mail.toJSON()
-  //   var request = sg.emptyRequest()
-  //   request.method = 'POST'
-  //   request.path = '/v3/mail/send'
-  //   request.body = requestBody
+    var sg = require('sendgrid').SendGrid(process.env.SENDGRID_API_KEY);
+    var requestBody = mail.toJSON()
+    var request = sg.emptyRequest()
+    request.method = 'POST'
+    request.path = '/v3/mail/send'
+    request.body = requestBody
 
-  //   sg.API(request, function (response) {
-  //     console.log(response.statusCode)
-  //     console.log(response.body)
-  //     console.log(response.headers)
-  //     console.log(response)
-  //   })
+    sg.API(request, function (response) {
+      console.log(response.statusCode)
+      console.log(response.body)
+      console.log(response.headers)
+      console.log(response)
+    })
     res.redirect('/');
   
+  });
 });
 
 

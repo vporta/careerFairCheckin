@@ -1,7 +1,9 @@
-# saveTheTreesResumeSender
+# careerFairCheckin
+
 
 ## Allows recruiters to checkin at your table and receive an email with your resume link
 
+## This app is a Node.js and Express.js example of how to integrate sendgrid's email system into your app. Use this app if you are at a career fair needing to easily keep track of the people visiting your table. The app will also send an email to the recipient with your resume.    
 `git clone https://github.com/vporta/saveTheTreesResumeSender.git`
 
 run: `npm install`
@@ -24,5 +26,3 @@ To get it working on your computer:
 
 
 
-
-# careerFairCheckin
